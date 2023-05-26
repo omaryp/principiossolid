@@ -1,4 +1,4 @@
-package principiossolid.s.practica.fin;
+package principiossolid.o.practica;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UsuariosBD {
+    
     private String ficheroDatos;
     
     public UsuariosBD(){
@@ -39,6 +40,18 @@ public class UsuariosBD {
         }
 
         return usuarios;
+    }
+
+    public Usuario buscarUsuario(Usuario usuario) {
+        List<Usuario> usuarios = convertirUsuariosFicheroEnArrayList();
+
+        for (Usuario usuarioActual : usuarios) {
+            if (usuarioActual.nombreUsuario.equalsIgnoreCase(usuario.nombreUsuario)) {
+                return usuarioActual;
+            }
+        }
+
+        return null;
     }
 
     public void insertarUsuario(Usuario usuario){
